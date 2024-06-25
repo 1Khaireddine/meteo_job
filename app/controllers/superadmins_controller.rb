@@ -1,0 +1,2 @@
+class SuperadminsController < User
+end
