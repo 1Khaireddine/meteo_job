@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_25_140147) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_25_142929) do
   create_schema "hstore"
   create_schema "uuid"
 
@@ -19,6 +19,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_140147) do
   enable_extension "plpgsql"
   enable_extension "unaccent"
   enable_extension "uuid-ossp"
+
+  create_table "companies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "subdomain"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,8 +42,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_140147) do
     t.string "last_name"
     t.date "birth_date"
     t.string "type", default: "Condidate", null: false
+    t.uuid "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "users", "companies"
 end
