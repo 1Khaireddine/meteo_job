@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_25_142929) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_25_145859) do
   create_schema "hstore"
   create_schema "uuid"
 
@@ -26,6 +26,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_142929) do
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "offers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.date "expired_date"
+    t.date "limit_date"
+    t.uuid "company_id", null: false
+    t.uuid "admin_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_offers_on_admin_id"
+    t.index ["company_id"], name: "index_offers_on_company_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -48,5 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_142929) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "offers", "companies"
+  add_foreign_key "offers", "users", column: "admin_id"
   add_foreign_key "users", "companies"
 end

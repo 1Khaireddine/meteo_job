@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :offers
   resources :companies
   get 'home/index'
   resources :condidates
