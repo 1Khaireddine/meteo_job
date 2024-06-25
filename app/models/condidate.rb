@@ -1,0 +1,2 @@
+class Condidate < User
+end

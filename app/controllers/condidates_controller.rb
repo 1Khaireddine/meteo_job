@@ -1,0 +1,2 @@
+class CondidatesController < User
+end

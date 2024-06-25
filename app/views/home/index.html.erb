@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <h1>Welcome, <%= current_user.email %>!</h1>
+  <!-- Add more content for authenticated users here -->
+<% else %>
+  <h1>Welcome to our site!</h1>
+  <%= render 'devise/sessions/new' %>
+<% end %>
