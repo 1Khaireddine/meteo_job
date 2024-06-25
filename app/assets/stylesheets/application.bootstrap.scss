@@ -1,2 +1,16 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+@import 'body';
+
+.logo {
+  height: auto;
+  display: block;
+  max-width: 120px;
+}
+
+.avatar-profile {
+  display: block;
+  height: auto;
+  width: 34px;
+}
