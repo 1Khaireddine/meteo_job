@@ -1,0 +1,37 @@
+<%= form_with(model: offer, local: false, id: "offer_form") do |form| %>
+  <% if offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+      <ul>
+        <% offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-2">
+    <%= form.label :title, class:"form-label" %>
+    <%= form.text_field :title, class:"form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :description, class:"form-label" %>
+    <%= form.text_area :description, class:"form-control", rows:5 %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :expired_date, class:"form-label" %>
+    <input type="date" name="offer[expired_date]" value="<%= Date.current %>", class="form-control">
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :limit_date, class:"form-label" %>
+    <input type="date" name="offer[limit_date]" value="<%= Date.current %>", class="form-control">
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
