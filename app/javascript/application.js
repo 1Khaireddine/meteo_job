@@ -10,8 +10,8 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
-document.addEventListener("turbo:load", function() {
-    setTimeout(function () {
-      $("#notice-message").slideUp()
-    }, 5000)
+document.addEventListener("turbo:load", function () {
+  setTimeout(function () {
+    $("#notice-message").slideUp()
+  }, 5000)
 });
