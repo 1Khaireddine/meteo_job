@@ -32,7 +32,7 @@ class AddDeviseToUsers < ActiveRecord::Migration[7.1]
       t.string :first_name
       t.string :last_name
       t.date :birth_date
-      t.string :type, null: false, default: "Condidate"
+      t.string :type, null: false, default: "Candidate"
 
 
       ## Lockable

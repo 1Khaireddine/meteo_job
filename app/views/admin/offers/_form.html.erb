@@ -1,4 +1,5 @@
-<%= form_with(model: offer, local: false, id: "offer_form") do |form| %>
+<%= form_with(model: [:admin, offer], local: false, id: "offer_form") do |form| %>
+  <h1><%= title %></h1>
   <% if offer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
@@ -23,12 +24,12 @@
 
   <div class="mb-2">
     <%= form.label :expired_date, class:"form-label" %>
-    <input type="date" name="offer[expired_date]" value="<%= Date.current %>", class="form-control">
+    <input type="date" name="offer[expired_date]" value="<%= offer.expired_date || Date.current %>", class="form-control">
   </div>
 
   <div class="mb-2">
     <%= form.label :limit_date, class:"form-label" %>
-    <input type="date" name="offer[limit_date]" value="<%= Date.current %>", class="form-control">
+    <input type="date" name="offer[limit_date]" value="<%= offer.limit_date || Date.current %>", class="form-control">
   </div>
 
   <div class="actions">

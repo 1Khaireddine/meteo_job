@@ -6,7 +6,7 @@ class CreateOffers < ActiveRecord::Migration[7.1]
       t.date :expired_date
       t.date :limit_date
       t.references :company, null: false, foreign_key: true, type: :uuid
-      t.references :admin, null: false, foreign_key: { to_table: :users }, type: :uuid
+      t.references :user, null: false, foreign_key: true, type: :uuid
 
       t.timestamps
     end

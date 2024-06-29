@@ -1,2 +1,0 @@
-class CondidatesController < User
-end
