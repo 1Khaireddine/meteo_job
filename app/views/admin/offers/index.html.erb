@@ -1,0 +1,11 @@
+<h1>
+  Our Offers
+</h1>
+
+<% @offers.each do |offer| %>
+  <div>
+    <%= offer.title %>
+    <%= link_to 'Edit', edit_admin_offer_path(offer)%>
+    <%= link_to 'Posts', posts_admin_offer_path(offer)%>
+  </div>
+<% end %>

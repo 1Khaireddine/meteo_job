@@ -1,2 +1,0 @@
-class Condidate < User
-end
